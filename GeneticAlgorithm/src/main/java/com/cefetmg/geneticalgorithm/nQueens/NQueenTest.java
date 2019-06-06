@@ -1,4 +1,4 @@
-package com.cefetmg.geneticalgorithm.nQueens.individual;
+package com.cefetmg.geneticalgorithm.nQueens;
 
 import com.cefetmg.geneticalgorithm.commom.FGAGeneticAlgorithm;
 import com.cefetmg.geneticalgorithm.commom.individual.Individual;

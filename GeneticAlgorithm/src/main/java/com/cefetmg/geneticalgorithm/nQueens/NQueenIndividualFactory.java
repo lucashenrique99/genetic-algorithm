@@ -1,7 +1,8 @@
-package com.cefetmg.geneticalgorithm.nQueens.individual;
+package com.cefetmg.geneticalgorithm.nQueens;
 
 import com.cefetmg.geneticalgorithm.commom.individual.Individual;
 import com.cefetmg.geneticalgorithm.commom.individual.IndividualFactory;
+import com.cefetmg.geneticalgorithm.nQueens.individual.NQueenIndividual;
 import java.util.ArrayList;
 import java.util.List;
 
