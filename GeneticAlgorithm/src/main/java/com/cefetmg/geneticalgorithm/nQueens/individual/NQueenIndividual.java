@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class NQueenIndividual implements Individual {
 
-    private final List<Integer> genes;
+    private final List<Double> genes;
 
     public NQueenIndividual(int numGenes) {
 
@@ -17,12 +17,12 @@ public class NQueenIndividual implements Individual {
 
         genes = new ArrayList<>(numGenes);
         for (int i = 0; i < numGenes; i++) {
-            this.genes.add(r.nextInt(numGenes));
+            this.genes.add( new Double(r.nextInt(numGenes)));
         }
 
     }
 
-    public NQueenIndividual(List<Integer> genes) {
+    public NQueenIndividual(List<Double> genes) {
         this.genes = genes;
     }
 
@@ -34,8 +34,8 @@ public class NQueenIndividual implements Individual {
         Random r = new Random();
         int index = r.nextInt(this.genes.size());
         int numGenes = this.genes.size();
-        List<Integer> childOne = new ArrayList<>();
-        List<Integer> childTwo = new ArrayList<>();
+        List<Double> childOne = new ArrayList<>();
+        List<Double> childTwo = new ArrayList<>();
 
         for (int i = 0; i < numGenes; i++) {
             boolean case1 = (index + size) >= numGenes;
@@ -49,26 +49,12 @@ public class NQueenIndividual implements Individual {
             }
         }
 
-//        int i = 0;
-//        while( i < size){
-//            childOne.add(this.genes.get(index));
-//            childTwo.add(individual.getGenes().get(index));
-//            index = (index + 1) % numGenes;
-//            i++;
-//        }
-//        
-//        while(childOne.size() < this.genes.size()){
-//            childOne.add(individual.getGenes().get(index));
-//            childTwo.add(this.genes.get(index));
-//            index = (index + 1) % numGenes;
-//            i++;
-//        }
         return Arrays.asList(new NQueenIndividual(childOne), new NQueenIndividual(childTwo));
     }
 
     @Override
     public Individual mutate() {
-        List<Integer> newGenes = new ArrayList<>(this.genes.size());
+        List<Double> newGenes = new ArrayList<>(this.genes.size());
 
         Random r = new Random();
         for (int i = 0; i < this.genes.size(); i++) {
@@ -76,16 +62,16 @@ public class NQueenIndividual implements Individual {
             if (probability < 0.8) {
                 newGenes.add(this.genes.get(i));
             } else {
-                newGenes.add(r.nextInt(this.genes.size()));
+                newGenes.add(new Double(r.nextInt(this.genes.size())));
             }
         }
 
         for (int i = 0; i < newGenes.size(); i++) {
-            Integer get = newGenes.get(i);
+            Double get = newGenes.get(i);
             if (get.equals(this.genes.get(i))) {
-                Integer newValue = r.nextInt(this.genes.size());
+                Double newValue = new Double(r.nextInt(this.genes.size()));
                 while (newValue.equals(get)) {
-                    newValue = r.nextInt(this.genes.size());
+                    newValue = new Double(r.nextInt(this.genes.size()));
                 }
                 newGenes.set(i, newValue);
                 break;
@@ -99,10 +85,10 @@ public class NQueenIndividual implements Individual {
     public Double getEvaluation() {
         double result = 0;
         for (int i = 0; i < genes.size(); i++) {
-            Integer current = genes.get(i);
+            Double current = genes.get(i);
 
             for (int j = i + 1; j < genes.size(); j++) {
-                Integer target = genes.get(j);
+                Double target = genes.get(j);
 
                 if (current.equals(target) || target.equals(current + (j - i)) || target.equals(current - (j - i))) {
                     result++;
@@ -114,7 +100,7 @@ public class NQueenIndividual implements Individual {
     }
 
     @Override
-    public List<Integer> getGenes() {
+    public List<Double> getGenes() {
         return this.genes;
     }
 

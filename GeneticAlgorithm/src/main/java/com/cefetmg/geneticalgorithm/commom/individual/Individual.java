@@ -10,6 +10,6 @@ public interface Individual {
     
     public Double getEvaluation();
     
-    public List<Integer> getGenes();
+    public List<Double> getGenes();
     
 }
