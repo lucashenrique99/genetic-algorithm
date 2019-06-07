@@ -37,7 +37,7 @@ public class FGAGeneticAlgorithm implements GeneticAlgorithm {
 
             initialPopulation = generateNextGeneration(numElitism, numIndividual, generationResult, isMaximization);
 
-            System.out.println("Generation: " + i + "\t Evaluation: " + initialPopulation.get(0).getEvaluation() + "\t " + initialPopulation.get(0));
+//            System.out.println("Generation: " + i + "\t Evaluation: " + initialPopulation.get(0).getEvaluation() + "\t " + initialPopulation.get(0));
         }
 
         return initialPopulation.stream().findFirst().get();

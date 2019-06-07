@@ -78,7 +78,7 @@ public class DixonPriceIndividual implements Individual {
 
     @Override
     public String toString() {
-        return "Genes{" + String.join(", ", this.dimensions.stream().map(i -> i.toString()).collect(Collectors.toList())) + '}';
+        return "f(" + String.join(", ", this.dimensions.stream().map(i -> i.toString()).collect(Collectors.toList())) + ") = " + this.getEvaluation();
     }
 
 }
